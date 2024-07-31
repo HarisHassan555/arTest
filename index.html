@@ -1,41 +1,65 @@
-<!doctype html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-        <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-        <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-    </head>
+<!DOCTYPE html>
+<html lang="en">
 
-    <body style="margin: 0; overflow: hidden;">
-        <a-scene
-            renderer="logarithmicDepthBuffer: true;"
-            embedded
-            loading-screen="enabled: false;"
-            arjs="sourceType: webcam; debugUIEnabled: false;"
-        >
-            <a-assets>
-                <a-asset-item
-                    id="animated-asset"
-                    src="scene.gltf"
-                ></a-asset-item>
-            </a-assets>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="theme-color" content="#000000" />
+  <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+  <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
 
-            <a-text 
-                value="hehe"
-                scale="50 50 50"
-                gps-entity-place="latitude: 31.443740; longitude: 74.398531;"
-            ></a-text>
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <!-- we import arjs version without NFT but with marker + location based support -->
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <title>React App</title>
+</head>
 
-                <a-entity
-                    gltf-model="#animated-asset"
-                    scale="1.1269040357549815 1.1269040357549815 1.1269040357549815"
-                    gps-entity-place="latitude: 31.443740; longitude: 74.398531;"
-                ></a-entity>
+<body>
+  <a-scene embedded arjs>
+    <a-marker type="pattern" url="https://raw.githubusercontent.com/HarisHassan555/glbfiles/main/pattern-marker%20(1).patt">
+      <a-entity
+        gltf-model="./scene.gltf"
+        scale="0.03 0.03 0.03" position="0 0 0" rotation="0 0 0">
+      </a-entity>
+    </a-marker>
+    <a-entity camera></a-entity>
+  </a-scene>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
 
-            <a-camera gps-camera rotation-reader></a-camera>
-        </a-scene>
-    </body>
+  <iframe
+src="https://www.chatbase.co/chatbot-iframe/8eESrNyaf7P8MuXxjwvx3"
+width="100%"
+style="height: 100%; min-height: 700px"
+frameborder="0"
+></iframe>
+
+
+<script>
+  window.embeddedChatbotConfig = {
+  chatbotId: "8eESrNyaf7P8MuXxjwvx3",
+  domain: "www.chatbase.co"
+  }
+  </script>
+  <script
+  src="https://www.chatbase.co/embed.min.js"
+  chatbotId="8eESrNyaf7P8MuXxjwvx3"
+  domain="www.chatbase.co"
+  defer>
+  </script>
 </html>
